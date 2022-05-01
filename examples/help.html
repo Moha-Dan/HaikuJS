@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+	<script src='../haiku.js'></script>
+	<style>
+		#menu.open{
+			opacity:1;
+			height: auto;
+		}
+		#menu:not(.open){
+			opacity:0;
+			height: 0px;
+			transition: .5s;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		console.log("HaikuElement.help()")
+		console.log(HaikuElement.help())
+	</script>
+	<haiku-light></haiku-light>
+	<ul id="menu">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	<haiku-burger menu="menu"></haiku-burger>
+	<haiku-tips>
+		This is a tips</haiku-tips>
+	<haiku-search></haiku-search>
+	<haiku-image src="../haiku.png" width="50px" height="50px" aspect="1/1"></haiku-image>
+	<haiku-slideshow content="page1,page2,page3">
+		<div id="page1">Page 1</div>
+		<div id="page2">Page 2</div>
+		<div id="page3">Page 3</div>
+	</haiku-slideshow>
+	<haiku-form>
+		<fieldset>
+			<h2>Page 1</h2>
+			<input />
+			<input type="button" class="next action-button" value="Next" name="next"/>
+		</fieldset>
+		<fieldset>
+			<h2>Page 2</h2>
+			<input />
+			<input type="button" class="next action-button" value="Next" name="next"/>
+		</fieldset>
+		<fieldset>
+			<h2>Page 3</h2>
+			<input />
+			<input type="button" class="submit action-button" value="Submit" name="submit"/>
+		</fieldset>
+	</haiku-form>
+</body>
+</html>
