@@ -436,6 +436,120 @@ class InputSearch extends HaikuElement{
 
 HaikuElement.register("search",InputSearch)
 
+class SearchPanel extends HaikuElement{
+	static style = `
+	.menu-form {
+		border-radius: 32px !important;
+		display: flex !important;
+		height: 66px !important;
+		background-color: #fff !important;
+		margin: 2em;
+		color: #222;
+		overflow: clip;
+	}
+	.menu-form label {
+		display: block;
+		min-width: 66px;
+		border-radius: 33px;
+		min-height: 66px;
+		margin: auto;
+		width: 100%;
+		padding: 15px;
+		box-sizing: border-box;
+		transition: box-shadow .5s cubic-bezier(0.25, 0.46, 0.45, 0.94),border .2s,background .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+	.menu-form input{display:none;}
+	.menu-form input:not(:checked) + label:hover {background-color: #eee;box-shadow: #eee 0px 0px 12px 6px !important;}
+	.menu-form input:checked + label {box-shadow: #eee 0px 0px 12px 6px !important;}
+	.main-form {
+		background-color: #eee !important;
+		border-radius: 32px !important;
+		padding: 32px 32px 64px;
+		margin: 2em;
+		display: none;
+		height: min-content;
+		transition: height .1s cubic-bezier(0.19, 1, 0.22, 1);
+	}
+	.main-form.show{
+		display: block;
+		position: relative;
+		top: -1em;
+		width: 80%;
+		color:#222;
+		z-index: 666;
+	}
+	.main-form>*{
+		display: none;
+	}
+	.main-form>.show{
+		display: flex;
+	}
+	`
+	#content = document.createElement('div')
+	#container = document.createElement('div')
+	#main = document.createElement('div')
+	constructor(){
+		super()
+		
+		var style = document.createElement('style')
+		style.innerHTML = SearchPanel.style
+		this.#content.appendChild(style)
+		
+		this.#content.appendChild(this.#container)
+		this.#container.classList.add('menu-form')
+		this.#content.appendChild(this.#main)
+		this.#main.classList.add('main-form')
+		this.#content.style.position= "relative";
+		
+		this.shadowRoot.append(this.#content)
+	}
+	#changeForm(){
+		this.#main.querySelectorAll(`.show`).forEach(x=>x.classList.remove("show"))
+		var input = this.#container.querySelector('input:checked')
+		var value = input.id
+		this.#main.querySelector(`#${value}`).classList.add('show')
+		this.#main.classList.add('show')
+	}
+	add(el){
+		if(el){
+			var id = el.getAttribute('id')
+			var name = el.getAttribute('name')||id
+
+			var input = document.createElement('input')
+			input.setAttribute('name',"search")
+			input.setAttribute('id',id)
+			input.type = "radio"
+			input.addEventListener('click',()=>this.#changeForm())
+			el.classList.add("input")
+
+			var label = document.createElement('label')
+			label.innerHTML = name
+			label.setAttribute('for',id)
+			this.#container.appendChild(input)
+			this.#container.appendChild(label)
+			this.#main.appendChild(el)
+		}
+	}
+	connectedCallback(){
+		var ids = this.getAttribute('content')
+		window.addEventListener('load',()=>{
+			if(ids){
+				ids = ids.split(',')
+				ids.forEach((id,n)=>{
+					var el = document.getElementById(id)
+					this.add(el)
+				})
+			}
+			for(var child of this.children){
+				this.add(child)
+			}
+		})
+	}
+	
+}
+
+HaikuElement.register("searchpanel",SearchPanel)
+
 class ImageAspect extends HaikuElement{
 	#img = null
 	constructor(){
@@ -1002,8 +1116,14 @@ function UpdateDialog(){
 		document.body.classList.add("dialog-focus")
 	}
 }
+
 var styleEl = document.createElement('style');
 document.head.appendChild(styleEl);
+var link = document.createElement('link');
+
+link.rel = "stylesheet"
+link.href = document.querySelector('script[src*=haiku]').getAttribute('src').replace("js","css")
+document.head.appendChild(link);
 function addStylesheetRule (selector,rules) {
 	var css = Object.keys(rules).map(x=>`${x}:${rules[x]};`).join("")
 	styleEl.innerText += `${selector}{${css}}`

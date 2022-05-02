@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+	<script src='../haiku.js'></script>
+</head>
+<body>
+	<haiku-searchpanel content="categories,prices,delay,quality"></haiku-searchpanel>
+	<ul class="categories-list" id="categories">
+		<li>
+			<button class="card">Graphisme &amp; Design </button>
+		</li>
+		<li>
+			<button class="card">Vidéo &amp; Animation </button>
+		</li>
+		<li>
+			<button class="card">Programmation</button>
+		</li>
+		<li>
+			<button class="card">Gestion</button>
+		</li>
+		<li>
+			<button class="card">Serveur</button>
+		</li>
+	</ul>
+	<div id="prices" class="clean-form form">
+		<label>Devise</label>
+		<select>
+			<option>€</option>
+			<option>$</option>
+		</select>
+		<label>Prix visé</label>
+		<input type="number" name="Art-price" value="5" min="5" max="100" onchange="var v = this.parentElement.querySelector('input[name=pricemax]');v.min=this.value;if(~~(v.value)<~~(v.min))v.value = this.value">
+		<label>Prix Maximal</label>
+		<input type="number" name="Art-pricemax" value="5" min="5" max="100">
+	</div>
+	<div id="delay" class="clean-form form">
+		<label>Date Fixe</label>
+		<input type="date" name="Art-date">
+		<label>Durée</label>
+		<ul class="categories-list">
+			<li><input name="Art-delaylength" id="1week" type="radio" class="hidden"><label class="card" for="1week">Une Semaine</label></li>
+			<li><input name="Art-delaylength" id="2week" type="radio" class="hidden"><label class="card" for="2week">Deux Semaine</label></li>
+			<li><input name="Art-delaylength" id="1month" type="radio" class="hidden"><label class="card" for="1month">Un Mois</label></li>
+			<li><input name="Art-delaylength" id="2month" type="radio" class="hidden"><label class="card" for="2month">Deux Mois</label></li>
+		</ul>
+	</div>
+	<div id="quality" class="clean-form form">
+		<label>Qualité</label><input type="range" name="Art-quality" min="0" max="5" value="3">
+		<label>Expertise</label>
+		<ul class="categories-list">
+			<li><input name="Art-valuation" id="advice" type="radio" class="hidden"><label for="advice" class="card">Recommandé</label></li>
+			<li><input name="Art-valuation" id="expert" type="radio" class="hidden"><label for="expert" class="card">Expert</label></li>
+			<li><input name="Art-valuation" id="pro" type="radio" class="hidden"><label for="pro" class="card">Professionnel</label></li>
+			<li><input name="Art-valuation" id="advanced" type="radio" class="hidden"><label for="advanced" class="card">Avancé</label></li>
+			<li><input name="Art-valuation" id="new" type="radio" class="hidden"><label for="new" class="card">Nouveau</label></li>
+		</ul>
+	</div>
+</body>
+</html>
