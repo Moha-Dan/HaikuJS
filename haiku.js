@@ -848,7 +848,7 @@ class MultiForm extends HaikuElement{
 	form .action-button:hover, form .action-button:focus {box-shadow: 5px 5px 5px 2px var(--color);}
 	h2 {font-size: 15px;text-transform: uppercase;color: var(--dark);margin-bottom: 10px;}
 	h3 {font-weight: normal;font-size: 13px;color: #666;margin-bottom: 20px;}
-	.progressbar {margin-bottom: 30px;overflow: hidden;counter-reset: step;}
+	.progressbar {margin-bottom: 30px;overflow: hidden;counter-reset: step;display:flex;}
 	.progressbar li {list-style-type: none;color: var(--color);text-transform: uppercase;font-size: 9px;width: 33.33%;float: left;position: relative;}
 	.progressbar li:before {content: counter(step);counter-increment: step;
 	width: 20px;line-height: 20px;display: block;font-size: 10px;color: var(--color);background: white;border-radius: 3px;margin: 0 auto 5px auto;}
