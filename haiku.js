@@ -252,8 +252,8 @@ class NavBarToggle extends HaikuElement{
 	}
 	connectedCallback(){
 		this.style.display = "block"
-		this.style.height = "1em"
-		this.style.width = "1em"
+		this.style.minHeight = "1em"
+		this.style.minWidth = "1em"
 	}
 	switchMenu(value){
 		var menu = this.getAttribute('menu')
@@ -435,7 +435,6 @@ class InputSearch extends HaikuElement{
 }
 
 HaikuElement.register("search",InputSearch)
-
 class SearchPanel extends HaikuElement{
 	static style = `
 	.menu-form {
@@ -453,7 +452,6 @@ class SearchPanel extends HaikuElement{
 		border-radius: 33px;
 		min-height: 66px;
 		margin: auto;
-		width: 100%;
 		padding: 15px;
 		box-sizing: border-box;
 		transition: box-shadow .5s cubic-bezier(0.25, 0.46, 0.45, 0.94),border .2s,background .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -484,10 +482,46 @@ class SearchPanel extends HaikuElement{
 	.main-form>.show{
 		display: flex;
 	}
+	.menu-form>svg.button{
+  display: block;
+  height: 40px;
+  width: 40px;
+  right: 0;
+  top: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5px;
+  stroke-dashoffset: 271.908;
+  stroke-dasharray: 59 212.908;
+  /* transform:rotate(0deg); */
+  transition: all 0.6s ease;
+  animation-play-state: paused;
+  margin: auto;
+}
+.menu-form>input:checked~svg.button{
+  stroke-dasharray: 150 212.908;
+  stroke-dashoffset: 300;
+  stroke: currentColor;
+  cursor:pointer;
+  animation: rotate-button 2s linear infinite;
+  animation-play-state: running;
+}
+@keyframes rotate-button {
+  0% {
+	  transform:rotate(0deg);
+  }
+  60% {
+	  transform:rotate(180deg);
+  }
+  100% {
+	  transform:rotate(360deg);
+  }
+}
 	`
 	#content = document.createElement('div')
 	#container = document.createElement('div')
-	#main = document.createElement('div')
+	#main = document.createElement('form')
+	#button
 	constructor(){
 		super()
 		
@@ -500,20 +534,31 @@ class SearchPanel extends HaikuElement{
 		this.#content.appendChild(this.#main)
 		this.#main.classList.add('main-form')
 		this.#content.style.position= "relative";
-		
+		this.#container.innerHTML = `<svg class="button"><path d="m0-8c5 0 8 4 8 8c0 4-3 8-8 8c-5 0-8-4-8-8c0-4 3-8 8-8l0-9.1825c0-.4971 0-.8175 0-.8175a1 1 0 010 35a1 1 0 010-35" transform="translate(20,20) rotate(-225)"></path></svg>`
+		this.#button = this.#container.lastChild
+		this.#button.addEventListener("click",x=>{
+			this.#main.submit()
+		})
 		this.shadowRoot.append(this.#content)
 	}
 	#changeForm(){
-		this.#main.querySelectorAll(`.show`).forEach(x=>x.classList.remove("show"))
+		var current
+		this.#main.querySelectorAll(`.show`).forEach(x=>{x.classList.remove("show");current=x.id});
 		var input = this.#container.querySelector('input:checked')
 		var value = input.id
-		this.#main.querySelector(`#${value}`).classList.add('show')
-		this.#main.classList.add('show')
+		if(current != value){
+			this.#main.querySelector(`#${value}`).classList.add('show')
+			this.#main.classList.add('show')
+		}else{
+			this.#main.classList.remove('show')
+			input.checked = false
+		}
 	}
 	add(el){
 		if(el){
 			var id = el.getAttribute('id')
 			var name = el.getAttribute('name')||id
+			console.log(name)
 
 			var input = document.createElement('input')
 			input.setAttribute('name',"search")
@@ -525,12 +570,16 @@ class SearchPanel extends HaikuElement{
 			var label = document.createElement('label')
 			label.innerHTML = name
 			label.setAttribute('for',id)
-			this.#container.appendChild(input)
-			this.#container.appendChild(label)
+			this.#button.before(input)
+			this.#button.before(label)
 			this.#main.appendChild(el)
 		}
 	}
 	connectedCallback(){
+		var action = this.getAttribute('action')
+		var method = this.getAttribute('method')
+		this.#main.method = method
+		this.#main.action = action
 		var ids = this.getAttribute('content')
 		window.addEventListener('load',()=>{
 			if(ids){

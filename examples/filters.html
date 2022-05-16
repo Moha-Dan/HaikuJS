@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+	<script src='main.js'></script>
+</head>
+<body>
+	<div class="grid" id="filtred">
+		{% for chantier in projects %}
+			<div class="col-12 col-md-4 col-lg-3 {% for type in chantier.getTypes() %} {{type.getType()}}{% endfor %} filter" style="max-width:480px;margin: auto;">
+				<div class="card col-8 col-lg-12 shadow-hover">
+					<img-aspect aspect="16/9" crop="cover"  src="{{ asset("/uploads/images/chantier/#{chantier.getImages()[0].getImage()}") }}" alt="img"></img-aspect>
+					<h3 class="uppercase ellipsis">{{ chantier.nom }}</h3>
+					<p class="card-text">{{ chantier.description | striptags}}</p>
+					<div class="col">
+						<a href="{{path('chantier_show',{'id': chantier.id}) }}" class="col-12 btn outline centred">Voir plus</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+		<div class="filter error" style="display:none;margin: auto;font-weight: bold;" >Il n'y a pas d'article dans le chantier sélectionné
+			<div>
+		</div>
+</body>
+</html>
