@@ -1,0 +1,33 @@
+haiku-icon[icon=profit]{
+	background:linear-gradient(-45deg,#5C8,#6D9);
+	width: calc(var(--icon-size) * .8);
+	height: calc(var(--icon-size) * .4);
+	margin: calc(var(--icon-size) * .1);
+	margin-top: calc(var(--icon-size) * .4);
+	border-radius: 5px;
+	border: #3B7 solid calc(var(--icon-size) * .05);
+}
+haiku-icon[icon=profit]::before{
+	content:"";
+	position: relative;
+	transform: translateY(-60%);
+	display: block;
+	width: 100%;
+	height: 200%;
+	background:linear-gradient(215deg,#2AD,#1DE);
+	clip-path: polygon(
+		79% 9% , 84% 14% , 65.9% 32.7% , 34.6% 2.7% , -0.4% 36.5% , -0.4% 44% ,
+		 7.1% 44% , 34.6% 16.5% , 65.9% 46.5% , 91.5% 22.1% , 97.1% 27.1% , 100.7% 5.2%
+		);
+}
+haiku-icon[icon=profit]::after{
+	content: "";
+	position: relative;
+	transform: translateY(-275%);
+	display: block;
+	width: calc(var(--icon-size) * .2);
+	height: calc(var(--icon-size) * .2);
+	margin: auto;
+	background: #3B7;
+	border-radius: calc(var(--icon-size) * .1);
+}

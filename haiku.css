@@ -49,6 +49,7 @@
 	--timing:.4s;
 	--animed:cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
+	--icon-size:50px;
 	--font-size:12pt;
 
 	--nav:5em;
@@ -895,4 +896,7 @@ body.dialog-focus>main>:not(dialog[open]){
 	100%{
 		width: 0%;
 	}
+}
+haiku-icon{
+	display:block;
 }

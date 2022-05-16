@@ -1177,6 +1177,21 @@ function addStylesheetRule (selector,rules) {
 	var css = Object.keys(rules).map(x=>`${x}:${rules[x]};`).join("")
 	styleEl.innerText += `${selector}{${css}}`
 }
+const Haiku = {
+	Element,
+	createElement:function(tag){
+		return document.createElement(`haiku-${tag}`)
+	},
+	register:HaikuElement.register
+}
+Haiku.importCSS = function(file){
+	var link = document.createElement('link');
+	link.rel = "stylesheet"
+	link.href = Haiku.importCSS.path+file
+	document.head.appendChild(link);
+}
+Haiku.importCSS.path = document.querySelector('script[src*=haiku]').getAttribute('src').replace(/haiku.*js/,"")
+
 let preloads;
 window.addEventListener('load',()=>{
 	addStylesheetRule("html",{
