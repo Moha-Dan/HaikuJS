@@ -1,0 +1,6 @@
+.hk-cell-8{
+	display: grid;
+	grid-template-columns: repeat(12,8.33vw);
+	grid-template-rows: repeat(12,8.33vw);
+	margin: 0;
+}

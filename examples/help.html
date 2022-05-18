@@ -19,7 +19,7 @@
 		}
 	</style>
 </head>
-<body>
+<body class="clean-body">
 	<script>
 		console.log("HaikuElement.help()")
 		console.log(HaikuElement.help())
@@ -57,5 +57,16 @@
 			<input type="button" class="submit action-button" value="Submit" name="submit"/>
 		</fieldset>
 	</haiku-form>
+	<haiku-icon icon="profit"></haiku-icon>
+	<haiku-canvas>
+		console.log("da")
+		function main(g){
+			g.fillRect(0,0,54,54)
+		}
+		main(context,canvas)
+	</haiku-canvas>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+	<haiku-chart>{"type":"pie","data":{"labels":["serveur","comunication","impot","inverstisseemt"],"datasets":[{"data":[8,9,13,20],"backgroundColor":["#C6A26E","#CA8E50","#C48032","#B46F2E"]}]},"options":{"scales":{"y":{"beginAtZero":true}},"plugins":{"legend":{"position":"left"}}}}
+	</haiku-chart>
 </body>
 </html>

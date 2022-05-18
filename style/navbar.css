@@ -1,0 +1,3 @@
+.hk-navbar{
+	width: calc(var(--cols-width) * var(--cols));
+}

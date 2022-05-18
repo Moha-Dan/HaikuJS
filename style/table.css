@@ -1,0 +1,35 @@
+:root{
+	--hk-table-color: var(--hk-body-color);
+	--hk-table-bg: transparent;
+	--hk-table-border-color: var(--hk-border-color);
+	--hk-table-accent-bg: transparent;
+	--hk-table-striped-color: var(--hk-body-color);
+	--hk-table-striped-bg: rgba(0, 0, 0, 0.05);
+	--hk-table-active-color: var(--hk-body-color);
+	--hk-table-active-bg: rgba(0, 0, 0, 0.1);
+	--hk-table-hover-color: var(--hk-body-color);
+	--hk-table-hover-bg: rgba(0, 0, 0, 0.075);
+}
+
+.hk-table {
+	display: table;
+	text-align: left;
+	position: relative;
+	width: 100%;
+	margin-bottom: 1rem;
+	color: var(--hk-table-color);
+	vertical-align: top;
+	border-color: var(--hk-table-border-color);
+	border-collapse: collapse;
+	border-radius: 0;
+}
+.hk-table :where(th, td) {
+	white-space: nowrap;
+	vertical-align: middle;
+	padding: 1rem;
+}
+.hk-table>thead,
+.hk-table>tbody,
+.hk-table>tfoot {
+	border: 1px solid var(--hk-table-border-color);
+}
