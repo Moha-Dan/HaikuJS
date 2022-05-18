@@ -1,0 +1,20 @@
+:root{
+	--rgb-colorD:111, 95, 72;
+	--rgb-colorL:204, 170, 119;
+
+	--rgb-color:var(--rgb-colorD);
+	
+	--rgb-dark:34,34,34;
+	--rgb-light:221,221,221;
+	--a-text:.7;
+}
+body{
+	--color:var(--rgb-color);
+	--light:var(--rgb-light);
+	--dark:var(--rgb-dark);
+}
+body.night{
+	--color:var(--rgb-color);
+	--light:var(--rgb-dark);
+	--dark:var(--rgb-light);
+}

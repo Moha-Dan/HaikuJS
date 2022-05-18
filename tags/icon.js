@@ -11,7 +11,7 @@
 	}
 	HaikuElement.register("icon",Icon)
 	function loadIcon(icon){
-		Haiku.importCSS(`/icons/${icon}.css`)
+		Haiku.importStyle(`/icons/${icon}.css`)
 	}
 	function addIcon(icon){
 		if(!loadedIcons.has(icon)){

@@ -1,0 +1,37 @@
+:root{
+	--cols-width:12.5vw;
+	--cols:8;
+}
+
+body.hk-cell-8{
+	--hk-main-left:1;
+	margin: 0;
+	min-height: 100vh;
+	--cols:8;
+}
+
+.half,.full,body{
+	display: grid;
+	grid-template-columns: repeat(var(--cols),);
+}
+
+body>nav,body>header{grid-column-start:1;grid-column-end: 9;}
+body :where(.left){--hk-main-left:3;}
+body>aside{grid-column-start:1;grid-column-end: 3;}
+body>main {
+	grid-column-start:var(--hk-main-left);grid-column-end: 9;
+}
+.flex-col{grid-auto-flow:column;}
+.flex-row{grid-auto-flow:row;}
+.first{--left:1;}
+.second{--left:5;}
+.middle{--left:3;}
+.full{grid-column-start:1;grid-column-end:var(--width);--width : calc(var(--cols) + 1);}
+.half{
+	grid-column-start:var(--left);
+	--width : calc(var(--cols) / 2);
+	grid-column-end:calc(var(--cols) - var(--width) + var(--left));
+}
+.half > *{
+	--cols:var(--width);
+}
