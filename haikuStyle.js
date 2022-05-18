@@ -2,7 +2,7 @@ Haiku.onload.add(()=>{
 	var themes = document.querySelectorAll('*[theme]')
 	themes.forEach(x=>{
 		var z = x.getAttribute('theme')
-		Haiku.importStyle(`/themes/${z}.css`)
+		Haiku.importStyle(`themes/${z}.css`)
 	})
 	var elements = document.querySelectorAll('*[class]')
 	elements.forEach(x=>{
@@ -11,7 +11,7 @@ Haiku.onload.add(()=>{
 			ls.forEach(y=>{
 				if(y.startsWith('hk') || y.startsWith('haiku')){
 					var z = y.split('-').slice(1).join("-")
-					Haiku.importStyle(`/style/${z}.css`)
+					Haiku.importStyle(`style/${z}.css`)
 					x.classList.remove(y)
 					x.classList.add(`hk-${z}`)
 				}
