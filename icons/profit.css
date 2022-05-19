@@ -23,11 +23,12 @@ haiku-icon[icon=profit]::before{
 haiku-icon[icon=profit]::after{
 	content: "";
 	position: relative;
-	transform: translateY(-275%);
+	transform: translateY(-50%);
 	display: block;
 	width: calc(var(--icon-size) * .2);
 	height: calc(var(--icon-size) * .2);
 	margin: auto;
+	top: -150%;
 	background: #3B7;
 	border-radius: calc(var(--icon-size) * .1);
 }
