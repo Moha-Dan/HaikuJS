@@ -27,6 +27,8 @@ class HaikuElement extends HTMLElement{
 const Haiku = {
 	onload:new Set(),
 	onupdate:new Set(),
+	load(){this.onload.forEach(callback=>callback(ev))},
+	update(){this.onload.forEach(callback=>callback(ev))},
 	Element:HaikuElement,
 	createElement:function(tag){
 		return document.createElement(`haiku-${tag}`)
@@ -63,7 +65,7 @@ window.addEventListener('load',(ev)=>{
 	// 	"--light":"#fff",
 	// 	"--color":"#888",
 	// })
-	Haiku.onload.forEach(callback=>callback(ev))
+	Haiku.load()
 	preloads = document.querySelectorAll('.preload')
 	preloads.forEach(preload=>{
 		preload.classList.remove('preload')
