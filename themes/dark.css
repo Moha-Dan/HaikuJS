@@ -13,7 +13,6 @@ body{
 	--light:var(--rgb-light);
 	--dark:var(--rgb-dark);
 	background-color: rgb(var(--dark));
-	padding: 1.875rem 1.75rem;
 }
 body.night{
 	--color:var(--rgb-color);
@@ -22,10 +21,4 @@ body.night{
 }
 nav{
 	background-color: rgb(var(--light));
-	left: 0;
-	position: fixed;
-	top: 0;
-}
-main{
-	padding-top: 70px;
 }
