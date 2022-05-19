@@ -26,6 +26,7 @@ class HaikuElement extends HTMLElement{
 }
 const Haiku = {
 	onload:new Set(),
+	onupdate:new Set(),
 	Element:HaikuElement,
 	createElement:function(tag){
 		return document.createElement(`haiku-${tag}`)

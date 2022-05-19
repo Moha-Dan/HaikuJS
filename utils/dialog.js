@@ -16,3 +16,4 @@ window.addEventListener('hashchange',()=>{
 	Haiku.UpdateDialog()
 })
 Haiku.onload.add(Haiku.UpdateDialog)
+Haiku.onupdate.add(Haiku.UpdateDialog)
