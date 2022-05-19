@@ -27,8 +27,8 @@ class HaikuElement extends HTMLElement{
 const Haiku = {
 	onload:new Set(),
 	onupdate:new Set(),
-	load(){this.onload.forEach(callback=>callback(ev))},
-	update(){this.onload.forEach(callback=>callback(ev))},
+	load(ev={}){this.onload.forEach(callback=>callback(ev))},
+	update(ev={}){this.onload.forEach(callback=>callback(ev))},
 	Element:HaikuElement,
 	createElement:function(tag){
 		return document.createElement(`haiku-${tag}`)

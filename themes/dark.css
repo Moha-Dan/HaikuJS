@@ -4,17 +4,28 @@
 
 	--rgb-color:var(--rgb-colorD);
 	
-	--rgb-dark:34,34,34;
-	--rgb-light:221,221,221;
+	--rgb-dark:0,0,0;
+	--rgb-light:17, 34, 51;
 	--a-text:.7;
 }
 body{
 	--color:var(--rgb-color);
 	--light:var(--rgb-light);
 	--dark:var(--rgb-dark);
+	background-color: rgb(var(--dark));
+	padding: 1.875rem 1.75rem;
 }
 body.night{
 	--color:var(--rgb-color);
 	--light:var(--rgb-dark);
 	--dark:var(--rgb-light);
+}
+nav{
+	background-color: rgb(var(--light));
+	left: 0;
+	position: fixed;
+	top: 0;
+}
+main{
+	padding-top: 70px;
 }

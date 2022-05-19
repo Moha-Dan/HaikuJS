@@ -6,6 +6,7 @@ Haiku.onload.add(()=>{
 			var y = x.tagName.split('-')[1].toLowerCase()
 			Haiku.importScript(`tags/${y}.js`)
 		}else{
+			
 			// Haiku.importStyle(`/style/${x.tagName}.css`)
 		}
 	})
