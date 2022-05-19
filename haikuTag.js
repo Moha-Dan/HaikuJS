@@ -3,7 +3,8 @@ Haiku.onload.add(()=>{
 	elements.forEach(x=>{
 		if(x.tagName.startsWith("HAIKU")){
 			/*is @{HaikuElement}*/
-			Haiku.importScript(`tags/${x.tagName.split('-')[1]}.js`)
+			var y = x.tagName.split('-')[1].toLowerCase()
+			Haiku.importScript(`tags/${y}.js`)
 		}else{
 			// Haiku.importStyle(`/style/${x.tagName}.css`)
 		}
