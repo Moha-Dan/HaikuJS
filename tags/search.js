@@ -79,6 +79,10 @@ class InputSearch extends HaikuElement{
   }
 }
 	`
+  #input
+  get value(){
+    return this.#input
+  }
 	constructor(){
 		super()
 		var style = document.createElement('style')
@@ -89,10 +93,23 @@ class InputSearch extends HaikuElement{
 		div.classList.add('search')
 		this.shadowRoot.appendChild(div)
 
+    this.#input = document.createElement('input')
+	  this.#input.classList.add('input')
+	  this.#input.classList.add('random-search')
+    this.#input.setAttribute("placeholder",this.getAttribute('placeholder')||"search")
+    this.#input.addEventListener('change',(ev)=>{
+      var e = new Event(ev.type)
+     this.dispatchEvent(e)
+    })
+    this.#input.addEventListener('keypress',(ev)=>{
+      var e = new Event(ev.type)
+      this.dispatchEvent(e)
+    })
+    
 		div.innerHTML = `
-		<input class="input random-search" type="text" name="" onchange="searchFX(this.value)" placeholder="${this.getAttribute('placeholder')||"search"}">
 		<svg class="button"><path d="m0-8c5 0 8 4 8 8c0 4-3 8-8 8c-5 0-8-4-8-8c0-4 3-8 8-8l0-9.1825c0-.4971 0-.8175 0-.8175a1 1 0 010 35a1 1 0 010-35" transform="translate(20,20) rotate(-225)"></path></svg>
 		`
+	  div.firstChild.before(this.#input)
 	}
 }
 
