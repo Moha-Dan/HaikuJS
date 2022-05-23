@@ -3,7 +3,7 @@ class MultiForm extends HaikuElement{
 	form {width: 400px;margin: 50px auto;text-align: center;position: relative;}
 	form>div{display:grid;grid-template:"a";}
 	form fieldset {grid-area: a;}
-	form fieldset {background: white;border: 0 none;border-radius: 3px;box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);padding: 20px 30px;box-sizing: border-box;width: 80%;margin: 0 10%;position: relative;}
+	form fieldset {background: var(--light-color);border: 0 none;border-radius: 3px;box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);padding: 20px 30px;box-sizing: border-box;width: 80%;margin: 0 10%;position: relative;}
 	form fieldset:not(:first-of-type) {display: none;}
 	form input, form textarea,form select {padding: 15px;border: 1px solid #ccc;border-radius: 3px;margin-bottom: 10px;width: 100%;box-sizing: border-box;font-family: montserrat;color: #2C3E50;font-size: 13px;}
 	form .action-button {width: 100px;background: var(--dark);font-weight: bold;color: var(--light);border: 0 none;border-radius: 1px;cursor: pointer;padding: 10px 5px;margin: 10px 5px;transition:box-shadow .5s ease-in-out;}
