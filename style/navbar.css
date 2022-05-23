@@ -1,3 +1,8 @@
 .hk-navbar{
 	width: calc(var(--cols-width) * var(--cols));
+	height: max-content;
+	padding: 1em;
+	display: grid;
+	grid-template-columns: repeat(auto-fill,var(--cols-width));
+	grid-template-rows: max-content;
 }
