@@ -38,9 +38,15 @@ class MultiForm extends HaikuElement{
 		this.shadowRoot.appendChild(style)
 		
 		this.shadowRoot.appendChild(this.#form)
+		this.#form.addEventListener('submit',(ev)=>{this.submit()})
 		this.#progress.classList.add("progressbar")
 		this.#form.appendChild(this.#progress)
 		this.#form.appendChild(this.#container)
+	}
+	submit(){
+		console.log("submit")
+		var e = new SubmitEvent("submit",ev)
+		this.dispatchEvent(e)
 	}
 	connectedCallback(){
 		var action = this.getAttribute('action')
@@ -139,8 +145,9 @@ class MultiForm extends HaikuElement{
 					},800)
 				})
 			var submit = el.querySelector('.submit')
-			if(submit)
-				submit.addEventListener("click",function (){return false})
+			if(submit){
+				submit.addEventListener("click",function (){this.submit();return false})
+			}
 			// var step = document.createElement('H3')
 			// step.textContent = `This is step ${this.#form.childElementCount-1}`
 			// h2.after(step)
